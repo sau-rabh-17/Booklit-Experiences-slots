@@ -1,74 +1,78 @@
-
-📘 Booklit Experiences – Slot Booking Platform
+📘 **Booklit Experiences – Slot Booking Platform**
 
 A full-stack web application that allows users to explore experiences, view available date/time slots, and book them securely with dynamic seat availability and promo code validation.
 
-🚀 Live Demo
-Frontend (Vite + React): `https://booklit-experiences-slots.onrender.com`
-Backend (Express + PostgreSQL): `https://booklit-experiences-slots-backend.onrender.com`
+---
 
-👉 Live Website
-  https://booklit-experiences-slots.onrender.com
+## 🚀 Live Demo
+**Frontend (Vite + React):** [https://booklit-experiences-slots.onrender.com](https://booklit-experiences-slots.onrender.com)  
+**Backend (Express + PostgreSQL):** [https://booklit-experiences-slots-backend.onrender.com](https://booklit-experiences-slots-backend.onrender.com)
 
-🧠 Overview
+---
+
+## 🧠 Overview
 Booklit Experiences is an end-to-end booking system where users can:
-- Browse various travel or adventure experiences
-- Select a date and time slot
-- Choose quantity dynamically (with seat availability validation)
-- Apply promo codes for discounts
-- Confirm bookings and receive a unique reference ID
+- Browse various travel or adventure experiences  
+- Select a date and time slot  
+- Choose quantity dynamically (with seat availability validation)  
+- Apply promo codes for discounts  
+- Confirm bookings and receive a unique reference ID  
 
-The system ensures real-time seat tracking using transaction locks in PostgreSQL to avoid overbooking.
+It ensures real-time seat tracking using **PostgreSQL transactions** (`FOR UPDATE`) to prevent overbooking.
 
-🏗️ Tech Stack
-Frontend
-- React 19 – UI framework
-- Vite – Fast build tool
-- TailwindCSS – Modern CSS utility framework
-- Axios – For API calls
-- React Router DOM 7 – Routing between pages
-- TypeScript – Type-safe frontend logic
+---
 
-Backend
-- Node.js + Express 5 – RESTful API
-- PostgreSQL – Relational database
-- pg (node-postgres) – PostgreSQL client
-- crypto – For generating unique booking references
-- dotenv – Environment variable management
-- Transactions with row locking (FOR UPDATE) – Prevent race conditions in slot booking
+## 🏗️ Tech Stack
 
-Deployment
-- Render – For hosting both frontend and backend
-- Render PostgreSQL – Managed cloud database
-- GitHub – Source control and CI/CD integration
+### 🖼️ Frontend
+- **React 19** – UI framework  
+- **Vite** – Fast build tool  
+- **TailwindCSS** – Utility-first CSS framework  
+- **Axios** – For API calls  
+- **React Router DOM 7** – Routing  
+- **TypeScript** – Type-safe development  
 
-📁 Project Structure
+### ⚙️ Backend
+- **Node.js + Express 5** – RESTful API  
+- **PostgreSQL** – Relational database  
+- **pg (node-postgres)** – Database client  
+- **crypto** – Unique booking reference generation  
+- **dotenv** – Manage environment variables  
+- **Transactions with FOR UPDATE** – Prevent race conditions in bookings  
+
+### ☁️ Deployment
+- **Render** – Hosting (frontend + backend)  
+- **Render PostgreSQL** – Managed database  
+- **GitHub** – Source control and CI/CD integration  
+
+---
+
+## 📁 Project Structure
 ```
 Booklit-Experiences-slots/
 ├── bookit-backend/
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── db.js                 # Database connection (PostgreSQL + SSL)
+│   │   │   └── db.js
 │   │   ├── controllers/
-│   │   │   ├── experiencesController.js # Fetch experiences & slots
-│   │   │   ├── bookingsController.js    # Create and manage bookings
-│   │   │   └── promoController.js       # Promo code validation logic
+│   │   │   ├── experiencesController.js
+│   │   │   ├── bookingsController.js
+│   │   │   └── promoController.js
 │   │   ├── routes/
 │   │   │   ├── index.js
 │   │   ├── app.js
-│   │   ├── server.js               # Express app entry point
-│   ├── .env                        # added in gitignore
-|   ├── .env.sample
+│   │   ├── server.js
+│   ├── .env (ignored in Git)
+│   ├── .env.sample
 │   ├── .gitignore
 │   ├── package.json
 │   ├── package-lock.json
-│   └── setup_dp.sql                # contains database schema and commands to insert all data
+│   └── setup_db.sql (schema + data insertion)
 │
 ├── bookit-frontend/
 │   ├── src/
 │   │   ├── api/
-│   │   │   └── api.ts                 # Axios setup & API methods
-│   │   ├── assets
+│   │   │   └── api.ts
 │   │   ├── components/
 │   │   │   ├── Navbar.tsx
 │   │   │   ├── BackButton.tsx
@@ -81,25 +85,24 @@ Booklit-Experiences-slots/
 │   │   │   ├── Home.tsx
 │   │   │   ├── Details.tsx
 │   │   │   └── Checkout.tsx
-│   │   ├── App.tsx                    # Routing setup
+│   │   ├── App.tsx
 │   │   ├── index.css
-│   │   └── main.tsx                   # React DOM entry
+│   │   └── main.tsx
 │   ├── public/
-│   │   └── hd.png                     # Logo
-│   ├── index.html
-│   ├── README.md
-│   ├── .env                           # added in gitignore
+│   │   └── hd.png
+│   ├── .env (ignored in Git)
 │   ├── .gitignore
 │   ├── eslint.config.js
 │   ├── package.json
-│   ├── package-lock.json
 │   ├── tsconfig.json
 │   └── vite.config.ts
 │
 └── README.md
 ```
 
-🧩 Database Schema (PostgreSQL)
+---
+
+## 🧩 Database Schema (PostgreSQL)
 ```
 CREATE TABLE experiences (
   id SERIAL PRIMARY KEY,
@@ -140,9 +143,9 @@ CREATE TABLE promos (
   value INT,
   active BOOLEAN DEFAULT TRUE
 );
-
 ```
 
+---
 
 ## ⚙️ `.env` Configuration
 
@@ -160,7 +163,6 @@ VITE_API_BASE=https://booklit-experiences-slots-backend.onrender.com/api
 ---
 
 ## 🧭 API Endpoints
-
 | Method | Endpoint | Description |
 |--------|-----------|--------------|
 | GET | `/api/experiences` | Fetch all experiences |
@@ -191,18 +193,17 @@ npm run dev
 ## 🌐 Deployment (Render)
 
 ### 🧩 Backend (Node + Express)
-- Root Directory: `bookit-backend`
-- Build Command: `npm install`
-- Start Command: `npm start`
+- **Root Directory:** `bookit-backend`  
+- **Build Command:** `npm install`  
+- **Start Command:** `npm start`  
 
 ### 🎨 Frontend (Vite + React)
-- Root Directory: `bookit-frontend`
-- Build Command: `npm install && npm run build`
-- Publish Directory: `dist`
+- **Root Directory:** `bookit-frontend`  
+- **Build Command:** `npm install && npm run build`  
+- **Publish Directory:** `dist`  
 
 ---
 
 ## 👨‍💻 Author
-
 **Saurabh Kumar Singh**  
 🌍 GitHub: [https://github.com/sau-rabh-17](https://github.com/sau-rabh-17)
