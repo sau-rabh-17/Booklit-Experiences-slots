@@ -40,55 +40,56 @@ Deployment
 - GitHub – Source control and CI/CD integration
 
 📁 Project Structure
+```
 Booklit-Experiences-slots/
-│
 ├── bookit-backend/
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── db.js              # Database connection (PostgreSQL + SSL)
+│   │   │   └── db.js                 # Database connection (PostgreSQL + SSL)
 │   │   ├── controllers/
-│   │   │   ├── experiencesController.js  # Fetch experiences & slots
-│   │   │   ├── bookingsController.js     # Create and manage bookings
-│   │   │   └── promoController.js        # Promo validation logic
+│   │   │   ├── experiencesController.js # Fetch experiences & slots
+│   │   │   ├── bookingsController.js    # Create and manage bookings
+│   │   │   └── promoController.js       # Promo code validation logic
 │   │   ├── routes/
 │   │   │   ├── experiences.js
 │   │   │   ├── bookings.js
 │   │   │   └── promos.js
-│   │   └── server.js              # Express app entry point
-│   ├── .env                       # Database credentials (Render URL)
+│   │   ├── server.js                  # Express app entry point
+│   │   └── .env                       # Database credentials (Render URL)
 │   ├── package.json
 │   └── README.md
 │
 ├── bookit-frontend/
 │   ├── src/
 │   │   ├── api/
-│   │   │   └── api.ts             # Axios setup & API methods
+│   │   │   └── api.ts                 # Axios setup & API methods
 │   │   ├── components/
 │   │   │   ├── Navbar.tsx
 │   │   │   ├── BackButton.tsx
 │   │   │   ├── DateSelector.tsx
 │   │   │   ├── TimeSlots.tsx
 │   │   │   ├── BookingSummary.tsx
-│   │   │   └── AboutSection.tsx
+│   │   │   ├── AboutSection.tsx
+│   │   │   └── Confirmation.tsx
 │   │   ├── pages/
 │   │   │   ├── Home.tsx
 │   │   │   ├── Details.tsx
-│   │   │   ├── Checkout.tsx
-│   │   │   └── Confirmation.tsx
-│   │   ├── App.tsx                # Routing structure
-│   │   └── main.tsx               # React DOM entry point
+│   │   │   └── Checkout.tsx
+│   │   ├── App.tsx                    # Routing setup
+│   │   └── main.tsx                   # React DOM entry
 │   ├── public/
-│   │   └── hd.png                 # Logo
+│   │   └── hd.png                     # Logo
 │   ├── index.html
 │   ├── tailwind.config.ts
 │   ├── vite.config.ts
-│   ├── package.json
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── package.json
 │
 └── README.md
+```
 
 🧩 Database Schema (PostgreSQL)
-
+```
 CREATE TABLE experiences (
   id SERIAL PRIMARY KEY,
   title VARCHAR(100),
@@ -144,7 +145,7 @@ CROSS JOIN (
 
 INSERT INTO promos (code, type, value, active)
 VALUES ('SAVE50', 'flat', 50, TRUE), ('DISC10', 'percent', 10, TRUE);
-
+```
 ⚙️ .env Configuration
 
 Backend .env
