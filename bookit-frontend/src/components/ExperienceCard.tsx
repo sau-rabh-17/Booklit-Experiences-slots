@@ -6,9 +6,10 @@ interface Props {
   price: number;
   imageUrl: string;
   location?: string;
+  description: string;
 }
 
-export default function ExperienceCard({ id, title, price, imageUrl, location }: Props) {
+export default function ExperienceCard({ id, title, price, imageUrl, location, description }: Props) {
   return (
     <div className="bg-gray-200 rounded-xl shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition">
       <img src={imageUrl} alt={title} className="w-full h-44 object-cover" />
@@ -22,7 +23,7 @@ export default function ExperienceCard({ id, title, price, imageUrl, location }:
           )}
         </div>
         <p className="text-gray-500 text-sm mt-1">
-          Curated small-group experience. Certified guide.
+          {description}
         </p>
         <div className="flex justify-between items-center mt-3">
           <span className="font-semibold text-gray-900">From ₹{price}</span>
