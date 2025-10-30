@@ -7,6 +7,9 @@ A full-stack web application that allows users to explore experiences, view avai
 Frontend (Vite + React): `https://booklit-experiences-slots.onrender.com`
 Backend (Express + PostgreSQL): `https://booklit-experiences-slots-backend.onrender.com`
 
+👉 Live Website
+  https://booklit-experiences-slots.onrender.com
+
 🧠 Overview
 Booklit Experiences is an end-to-end booking system where users can:
 - Browse various travel or adventure experiences
@@ -51,18 +54,21 @@ Booklit-Experiences-slots/
 │   │   │   ├── bookingsController.js    # Create and manage bookings
 │   │   │   └── promoController.js       # Promo code validation logic
 │   │   ├── routes/
-│   │   │   ├── experiences.js
-│   │   │   ├── bookings.js
-│   │   │   └── promos.js
-│   │   ├── server.js                  # Express app entry point
-│   │   └── .env                       # Database credentials (Render URL)
+│   │   │   ├── index.js
+│   │   ├── app.js
+│   │   ├── server.js               # Express app entry point
+│   ├── .env                        # added in gitignore
+|   ├── .env.sample
+│   ├── .gitignore
 │   ├── package.json
-│   └── README.md
+│   ├── package-lock.json
+│   └── setup_dp.sql                # contains database schema and commands to insert all data
 │
 ├── bookit-frontend/
 │   ├── src/
 │   │   ├── api/
 │   │   │   └── api.ts                 # Axios setup & API methods
+│   │   ├── assets
 │   │   ├── components/
 │   │   │   ├── Navbar.tsx
 │   │   │   ├── BackButton.tsx
@@ -76,14 +82,19 @@ Booklit-Experiences-slots/
 │   │   │   ├── Details.tsx
 │   │   │   └── Checkout.tsx
 │   │   ├── App.tsx                    # Routing setup
+│   │   ├── index.css
 │   │   └── main.tsx                   # React DOM entry
 │   ├── public/
 │   │   └── hd.png                     # Logo
 │   ├── index.html
-│   ├── tailwind.config.ts
-│   ├── vite.config.ts
+│   ├── README.md
+│   ├── .env                           # added in gitignore
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── package.json
+│   ├── package-lock.json
 │   ├── tsconfig.json
-│   └── package.json
+│   └── vite.config.ts
 │
 └── README.md
 ```
@@ -130,22 +141,9 @@ CREATE TABLE promos (
   active BOOLEAN DEFAULT TRUE
 );
 
-INSERT INTO experiences (title, description, image_url, location, price, about)
-VALUES
-('Kayaking', 'A fun kayaking experience', 'https://picsum.photos/400/300', 'Goa', 999, 'Learn kayaking with experts.'),
-('Mountain Hike', 'Adventure trek experience', 'https://picsum.photos/400/301', 'Manali', 1299, 'A scenic hike with professional guides.');
-
-INSERT INTO slots (experience_id, date, time, capacity, booked)
-SELECT e.id, d::date, t.time, 10, 0
-FROM experiences e
-CROSS JOIN generate_series('2025-10-30'::date, '2025-11-05'::date, '1 day') AS d
-CROSS JOIN (
-  VALUES ('07:00 AM'), ('09:00 AM'), ('11:00 AM'), ('01:00 PM')
-) AS t(time);
-
-INSERT INTO promos (code, type, value, active)
-VALUES ('SAVE50', 'flat', 50, TRUE), ('DISC10', 'percent', 10, TRUE);
 ```
+
+
 ⚙️ .env Configuration
 
 Backend .env
