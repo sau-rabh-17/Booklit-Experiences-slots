@@ -144,44 +144,65 @@ CREATE TABLE promos (
 ```
 
 
-⚙️ .env Configuration
+## ⚙️ `.env` Configuration
 
-Backend .env
+### 🖥️ Backend (`bookit-backend/.env`)
+```
 PORT=4000
-DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<dbname>
+DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+```
 
-Frontend .env
+### 💻 Frontend (`bookit-frontend/.env`)
+```
 VITE_API_BASE=https://booklit-experiences-slots-backend.onrender.com/api
+```
 
-🧭 API Endpoints
-GET /api/experiences - Fetch all experiences
-GET /api/experiences/:id - Fetch experience by ID (with slots)
-POST /api/bookings - Create new booking
-POST /api/promo/validate - Validate promo code
+---
 
-🧑‍💻 Local Development
+## 🧭 API Endpoints
 
-Backend:
+| Method | Endpoint | Description |
+|--------|-----------|--------------|
+| GET | `/api/experiences` | Fetch all experiences |
+| GET | `/api/experiences/:id` | Fetch experience details (with slots) |
+| POST | `/api/bookings` | Create a new booking |
+| POST | `/api/promo/validate` | Validate a promo code |
+
+---
+
+## 💻 Local Development
+
+### 🚀 Backend
+```
 cd bookit-backend
 npm install
 npm run dev
+```
 
-Frontend:
+### 🖼️ Frontend
+```
 cd bookit-frontend
 npm install
 npm run dev
+```
 
-🌐 Deployment (Render)
-Backend
-Root directory: bookit-backend
-Build command: npm install
-Start command: npm start
+---
 
-Frontend
-Root directory: bookit-frontend
-Build command: npm install && npm run build
-Publish directory: dist
+## 🌐 Deployment (Render)
 
-👨‍💻 Author
-Saurabh Kumar Singh
-GitHub: https://github.com/sau-rabh-17
+### 🧩 Backend (Node + Express)
+- Root Directory: `bookit-backend`
+- Build Command: `npm install`
+- Start Command: `npm start`
+
+### 🎨 Frontend (Vite + React)
+- Root Directory: `bookit-frontend`
+- Build Command: `npm install && npm run build`
+- Publish Directory: `dist`
+
+---
+
+## 👨‍💻 Author
+
+**Saurabh Kumar Singh**  
+🌍 GitHub: [https://github.com/sau-rabh-17](https://github.com/sau-rabh-17)
