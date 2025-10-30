@@ -11,7 +11,7 @@ export default function BackButton({ label = "Back", to = "/" }: BackButtonProps
   return (
     <button
       onClick={() => navigate(to)}
-      className="flex items-center text-gray-700 font-medium  hover:text-yellow-500 transition"
+      className="flex items-center text-gray-700 font-medium  hover:text-yellow-500 transition cursor-pointer"
     >
       <span className="text-xl mr-1">←</span> {label}
     </button>
