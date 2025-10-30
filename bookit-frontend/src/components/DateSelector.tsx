@@ -25,7 +25,7 @@ export default function DateSelector({
               setSelectedTime("");
               setQuantity(1);
             }}
-            className={`px-3 py-1 rounded-md border ${
+            className={`px-3 py-1 cursor-pointer rounded-md border ${
               selectedDate === date ? "bg-yellow-300" : "bg-white"
             }`}
           >
