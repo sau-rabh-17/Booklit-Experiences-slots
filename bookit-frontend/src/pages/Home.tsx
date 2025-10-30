@@ -37,6 +37,7 @@ export default function Home({ searchTerm }: HomeProps) {
             price={exp.price}
             imageUrl={exp.image_url}
             location={exp.location}
+            description={exp.description}
           />
         ))
       ) : (
